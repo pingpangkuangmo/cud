@@ -54,7 +54,14 @@ public abstract class BaseDaoImpl<T extends BaseDBBEntity> implements BaseDao<T>
 
 	@Override
 	public MyResponseBody update(DBBody t, Map<String, Object> params) {
-		return update(t.getMap(),params);
+		String table=t.getTable();
+		if(table==null || table.length()<1){
+			table=getTableName();
+			if(table==null || table.length()<1){
+				return MyResponseBodyUtil.failed("没有表名");
+			}
+		}
+		return domainOper.update(table,t.getMap(),params);
 	}
 	
 	@Override

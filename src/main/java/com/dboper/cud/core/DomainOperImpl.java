@@ -1,6 +1,7 @@
 package com.dboper.cud.core;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -81,7 +82,7 @@ public class DomainOperImpl implements DomainOper {
 			}
 			columns.append(tmpKey+",");
 			Object value=map.get(key);
-			if(value instanceof String){
+			if(value instanceof String || value instanceof Date){
 				values.append("'"+map.get(key)+"',");
 			}else{
 				values.append(value+",");
