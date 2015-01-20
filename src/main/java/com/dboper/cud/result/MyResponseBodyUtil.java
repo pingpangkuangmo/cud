@@ -37,4 +37,11 @@ public class MyResponseBodyUtil {
 		result.setStatus(1);
 		return result;
 	}
+	
+	public static MyResponseBody success(Object data){
+		MyResponseBody result=new MyResponseBody();
+		result.setData(data);
+		result.setStatus(1);
+		return result;
+	}
 }
