@@ -11,8 +11,12 @@ import com.dboper.cud.result.MyResponseBody;
 public interface BaseService<T extends BaseDBBEntity>{
 	
 	public MyResponseBody insert(DBBody dbBody);
+	
+	public MyResponseBody insertAndGetId(DBBody dbBody);
 
 	public MyResponseBody insert(T t);
+	
+	public MyResponseBody insertAndGetId(T t);
 
 	public MyResponseBody deleteStatusById(int id);
 

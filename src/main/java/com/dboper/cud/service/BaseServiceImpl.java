@@ -47,6 +47,16 @@ public abstract class BaseServiceImpl<T extends BaseDBBEntity> implements BaseSe
 		return getBaseDao().deleteBatchStatusByIds(ids);
 	}
 	
+	@Override
+	public MyResponseBody insertAndGetId(DBBody dbBody) {
+		return getBaseDao().insertAndGetId(dbBody);
+	}
+
+	@Override
+	public MyResponseBody insertAndGetId(T t) {
+		return getBaseDao().insertAndGetId(t);
+	}
+
 	protected abstract BaseDao<T> getBaseDao();
 
 }
