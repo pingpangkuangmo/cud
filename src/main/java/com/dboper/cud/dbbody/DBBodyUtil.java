@@ -86,6 +86,10 @@ public class DBBodyUtil {
 	            	 if(((Float)value)>0.0f){
 	            		 map.put(name,value);
 	            	 }
+	             }else if(value instanceof Double){
+	            	 if(((Double)value)>0.0d){
+	            		 map.put(name,String.format("%.2f",value));
+	            	 }
 	             }else if(value instanceof Date){
 	            	 if(value!=null){
 	            		 map.put(name,value);
@@ -103,5 +107,4 @@ public class DBBodyUtil {
 		}  
         return map;
 	}
-	
 }
