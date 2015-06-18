@@ -3,12 +3,12 @@ package com.dboper.cud.service;
 import java.util.List;
 import java.util.Map;
 
-import com.dboper.cud.base.BaseDBBEntity;
+import com.dboper.cud.base.BaseEntity;
 import com.dboper.cud.dbbody.DBBody;
 import com.dboper.cud.dbbody.UpdateBody;
 import com.dboper.cud.result.MyResponseBody;
 
-public interface BaseService<T extends BaseDBBEntity>{
+public interface BaseService<T extends BaseEntity>{
 	
 	public MyResponseBody insert(DBBody dbBody);
 	

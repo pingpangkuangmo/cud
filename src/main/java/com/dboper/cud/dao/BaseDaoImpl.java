@@ -7,7 +7,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import com.dboper.cud.base.BaseDBBEntity;
+import com.dboper.cud.base.BaseEntity;
 import com.dboper.cud.conf.Constants;
 import com.dboper.cud.core.DomainOper;
 import com.dboper.cud.dbbody.DBBody;
@@ -16,7 +16,7 @@ import com.dboper.cud.result.MyResponseBody;
 import com.dboper.cud.result.MyResponseBodyUtil;
 import com.dboper.cud.util.MapUtils;
 
-public abstract class BaseDaoImpl<T extends BaseDBBEntity> implements BaseDao<T>{
+public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T>{
 
 	@Resource(name="cud-domainOper")
 	private DomainOper domainOper;
@@ -95,7 +95,7 @@ public abstract class BaseDaoImpl<T extends BaseDBBEntity> implements BaseDao<T>
 	
 	@Override
 	public MyResponseBody update(UpdateBody<T> ts) {
-		return update(getDBbody(ts.getNewObj()).getMap(),ts.getOldObj().getId());
+		return update(getDBbody(ts.getNewObj()).getMap(),getDBbody(ts.getOldObj()).getMap());
 	}
 
 	@Override
@@ -133,7 +133,7 @@ public abstract class BaseDaoImpl<T extends BaseDBBEntity> implements BaseDao<T>
 	public MyResponseBody insertList(List<T> ts) {
 		List<DBBody> bodies=new ArrayList<DBBody>();
 		for(T t:ts){
-			bodies.add(t.toInsertDBBody());
+			bodies.add(t.toDBBody());
 		}
 		return insertListDBBody(bodies);
 	}
@@ -160,7 +160,7 @@ public abstract class BaseDaoImpl<T extends BaseDBBEntity> implements BaseDao<T>
 	}
 	
 	private DBBody getDBbody(T t){
-		return t.toInsertDBBody();
+		return t.toDBBody();
 	}
 	
 	private Map<String, Object> getIdParams(DBBody t, int id) {

@@ -9,18 +9,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DBBodyUtil {
-
+	
 	public static DBBody toDBBody(String table,Object t){
 		DBBody body=new DBBody();
 		body.setTable(table);
 		body.setMap(toMap(t,table));
-		return body;
-	}
-	
-	public static DBBody toUpdateDBBody(String table,Object t){
-		DBBody body=new DBBody();
-		body.setTable(table);
-		body.setMap(toIdMap(t,table));
 		return body;
 	}
 	
@@ -30,7 +23,7 @@ public class DBBodyUtil {
 		body.setMap(toIdMap(t,table));
 		return body;
 	} 
-	
+
 	private static Map<String,Object> toIdMap(Object t,String table){
 		if (t == null) {
 			throw new IllegalArgumentException("No bean specified");

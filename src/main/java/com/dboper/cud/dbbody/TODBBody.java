@@ -2,7 +2,7 @@ package com.dboper.cud.dbbody;
 
 public interface TODBBody{
 
-	public DBBody toInsertDBBody();
+	public DBBody toDBBody();
 	
-	public DBBody toUpdateDBBody();
+	public DBBody toIdDBBody();
 }

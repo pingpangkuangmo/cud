@@ -3,13 +3,13 @@ package com.dboper.cud.service;
 import java.util.List;
 import java.util.Map;
 
-import com.dboper.cud.base.BaseDBBEntity;
+import com.dboper.cud.base.BaseEntity;
 import com.dboper.cud.dao.BaseDao;
 import com.dboper.cud.dbbody.DBBody;
 import com.dboper.cud.dbbody.UpdateBody;
 import com.dboper.cud.result.MyResponseBody;
 
-public abstract class BaseServiceImpl<T extends BaseDBBEntity> implements BaseService<T>{
+public abstract class BaseServiceImpl<T extends BaseEntity> implements BaseService<T>{
 	
 	
 	@Override
