@@ -13,22 +13,22 @@ public interface BaseDao<T extends BaseEntity>{
 	public MyResponseBody insert(T t);
 	public MyResponseBody insertList(List<T> ts);
 	public MyResponseBody insertAndGetId(T t);
-	public MyResponseBody deleteById(int id);
-	public MyResponseBody deleteBatchStatusByIds(List<Integer> ids);
-	public MyResponseBody deleteStatusById(int id);
+	public MyResponseBody deleteById(Long id);
+	public MyResponseBody deleteBatchStatusByIds(List<Long> ids);
+	public MyResponseBody deleteStatusById(Long id);
 	public MyResponseBody deleteStatusByForeign(String foreignKey,Object value);
-	public MyResponseBody deleteBatchStatusById(List<Integer> ids);
+	public MyResponseBody deleteBatchStatusById(List<Long> ids);
 	public void delateAllData();
-	public MyResponseBody update(T t,int id);
+	public MyResponseBody update(T t,Long id);
 	public MyResponseBody update(T t,Map<String,Object> params);
 	
 	public MyResponseBody insert(DBBody t);
 	public MyResponseBody insertListDBBody(List<DBBody> ts);
 	public MyResponseBody insertAndGetId(DBBody t);
-	public MyResponseBody update(DBBody t,int id);
+	public MyResponseBody update(DBBody t,Long id);
 	public MyResponseBody update(DBBody t,Map<String,Object> params);
 	public MyResponseBody update(Map<String,Object> body,Map<String,Object> params);
 	public MyResponseBody update(UpdateBody<T> ts);
-	public MyResponseBody update(Map<String,Object> body,int id);
+	public MyResponseBody update(Map<String,Object> body,Long id);
 	
 }

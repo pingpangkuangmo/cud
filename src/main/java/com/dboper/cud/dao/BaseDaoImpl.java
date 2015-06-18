@@ -27,12 +27,12 @@ public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T>{
 	}
 
 	@Override
-	public MyResponseBody deleteById(int id) {
+	public MyResponseBody deleteById(Long id) {
 		return domainOper.deleteById(getTableName(),id);
 	}
 
 	@Override
-	public MyResponseBody update(T t, int id) {
+	public MyResponseBody update(T t, Long id) {
 		return update(getDBbody(t),id);
 	}
 	
@@ -42,7 +42,7 @@ public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T>{
 	}
 
 	@Override
-	public MyResponseBody update(DBBody t, int id) {
+	public MyResponseBody update(DBBody t, Long id) {
 		return update(t,getIdParams(t,id));
 	}
 
@@ -74,12 +74,12 @@ public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T>{
 	}
 	
 	@Override
-	public MyResponseBody deleteStatusById(int id) {
+	public MyResponseBody deleteStatusById(Long id) {
 		return _deleteByStatusById(id, getTableName());
 	}
 
 	@Override
-	public MyResponseBody deleteBatchStatusById(List<Integer> ids) {
+	public MyResponseBody deleteBatchStatusById(List<Long> ids) {
 		MyResponseBody result=new MyResponseBody();
 		if(ids==null || ids.size()<1){
 			return MyResponseBodyUtil.failed(result,"要删除的列表为空");
@@ -87,7 +87,7 @@ public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T>{
 		List<MyResponseBody> list=new ArrayList<MyResponseBody>();
 		result.setData(list);
 		String table_name=getTableName();
-		for(Integer id:ids){
+		for(Long id:ids){
 			list.add(_deleteByStatusById(id,table_name));
 		}
 		return result;
@@ -114,18 +114,18 @@ public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T>{
 	}
 
 	@Override
-	public MyResponseBody deleteBatchStatusByIds(List<Integer> ids) {
+	public MyResponseBody deleteBatchStatusByIds(List<Long> ids) {
 		MyResponseBody ret=new MyResponseBody();
-		Map<Integer,MyResponseBody> map=new HashMap<Integer,MyResponseBody>();
+		Map<Long,MyResponseBody> map=new HashMap<Long,MyResponseBody>();
 		ret.setData(map);
-		for(Integer id:ids){
+		for(Long id:ids){
 			map.put(id,deleteStatusById(id));
 		}
 		return ret;
 	}
 
 	@Override
-	public MyResponseBody update(Map<String, Object> body, int id) {
+	public MyResponseBody update(Map<String, Object> body, Long id) {
 		return update(body,MapUtils.getMap(getTableName()+".id",id));
 	}
 
@@ -148,7 +148,7 @@ public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T>{
 		domainOper.executeSqlCount("delete from "+getFullTableName());
 	}
 
-	private MyResponseBody _deleteByStatusById(int id,String table_name){
+	private MyResponseBody _deleteByStatusById(Long id,String table_name){
 		if(id<1){
 			throw new IllegalArgumentException("id="+id+" is not valid");
 		}
@@ -163,7 +163,7 @@ public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T>{
 		return t.toDBBody();
 	}
 	
-	private Map<String, Object> getIdParams(DBBody t, int id) {
+	private Map<String, Object> getIdParams(DBBody t, Long id) {
 		return MapUtils.getMap(getFullTableName()+".id",id);
 	}
 	

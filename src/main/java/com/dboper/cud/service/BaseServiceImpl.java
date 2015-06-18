@@ -23,7 +23,7 @@ public abstract class BaseServiceImpl<T extends BaseEntity> implements BaseServi
 	}
 
 	@Override
-	public MyResponseBody deleteStatusById(int id) {
+	public MyResponseBody deleteStatusById(Long id) {
 		return getBaseDao().deleteStatusById(id);
 	}
 
@@ -33,7 +33,7 @@ public abstract class BaseServiceImpl<T extends BaseEntity> implements BaseServi
 	}
 	
 	@Override
-	public MyResponseBody update(DBBody dbBody, int id) {
+	public MyResponseBody update(DBBody dbBody, Long id) {
 		return getBaseDao().update(dbBody,id);
 	}
 
@@ -43,7 +43,7 @@ public abstract class BaseServiceImpl<T extends BaseEntity> implements BaseServi
 	}
 
 	@Override
-	public MyResponseBody deleteBatchStatusByIds(List<Integer> ids) {
+	public MyResponseBody deleteBatchStatusByIds(List<Long> ids) {
 		return getBaseDao().deleteBatchStatusByIds(ids);
 	}
 	

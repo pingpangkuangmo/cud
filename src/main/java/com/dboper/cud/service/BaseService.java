@@ -18,13 +18,13 @@ public interface BaseService<T extends BaseEntity>{
 	
 	public MyResponseBody insertAndGetId(T t);
 
-	public MyResponseBody deleteStatusById(int id);
+	public MyResponseBody deleteStatusById(Long id);
 
 	public MyResponseBody update(UpdateBody<T> ts);
 	
-	public MyResponseBody update(DBBody dbBody,int id);
+	public MyResponseBody update(DBBody dbBody,Long id);
 	
 	public MyResponseBody update(DBBody dbBody,Map<String,Object> params);
 
-	public MyResponseBody deleteBatchStatusByIds(List<Integer> ids);
+	public MyResponseBody deleteBatchStatusByIds(List<Long> ids);
 }

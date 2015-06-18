@@ -199,7 +199,7 @@ public class DomainOperImpl implements DomainOper {
 		return result;
 	}
 
-	public MyResponseBody deleteById(String table_name, int id) {
+	public MyResponseBody deleteById(String table_name, Long id) {
 		MyResponseBody result=new MyResponseBody();
 		if(deleteByForeign(table_name,"id",id).getStatus()==0){
 			MyResponseBodyUtil.failed(result,"删除时发生异常");
@@ -207,13 +207,13 @@ public class DomainOperImpl implements DomainOper {
 		return result;
 	}
 
-	public Map<Integer,MyResponseBody> deleteBatchById(String table_name,
-			List<Integer> ids) {
-		Map<Integer,MyResponseBody> map=new HashMap<Integer,MyResponseBody>();
+	public Map<Long,MyResponseBody> deleteBatchById(String table_name,
+			List<Long> ids) {
+		Map<Long,MyResponseBody> map=new HashMap<Long,MyResponseBody>();
 		if(ids==null || ids.size()<1){
 			return map;
 		}
-		for(Integer id:ids){
+		for(Long id:ids){
 			map.put(id,deleteById(table_name, id));
 		}
 		return map;
