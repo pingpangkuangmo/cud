@@ -97,6 +97,12 @@ public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T>{
 	public MyResponseBody update(UpdateBody<T> ts) {
 		return update(getDBbody(ts.getNewObj()).getMap(),getDBbody(ts.getOldObj()).getMap());
 	}
+	
+	@Override
+	public MyResponseBody update(String table, Map<String, Object> body,
+			Map<String, Object> params) {
+		return domainOper.update(table,body,params);
+	}
 
 	@Override
 	public MyResponseBody insertAndGetId(T t) {

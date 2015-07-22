@@ -67,8 +67,15 @@ public class DBBodyUtil {
 	             name=table+"."+name;
 	             Method m=pd.getReadMethod();
 	             Object value=m.invoke(t);
+	             if(value==null){
+	            	 continue;
+	             }
 	             if(value instanceof Integer){
 	            	 if(((Integer)value)>0){
+	            		 map.put(name,value);
+	            	 }
+	             }if(value instanceof Long){
+	            	 if(((Long)value)>0){
 	            		 map.put(name,value);
 	            	 }
 	             }else if(value instanceof String){

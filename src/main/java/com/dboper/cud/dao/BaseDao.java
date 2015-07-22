@@ -22,6 +22,8 @@ public interface BaseDao<T extends BaseEntity>{
 	public MyResponseBody update(T t,Long id);
 	public MyResponseBody update(T t,Map<String,Object> params);
 	
+	public MyResponseBody update(String table,Map<String,Object> body,Map<String,Object> params);
+	
 	public MyResponseBody insert(DBBody t);
 	public MyResponseBody insertListDBBody(List<DBBody> ts);
 	public MyResponseBody insertAndGetId(DBBody t);

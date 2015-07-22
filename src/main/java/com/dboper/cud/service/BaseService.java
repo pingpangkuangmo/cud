@@ -25,6 +25,8 @@ public interface BaseService<T extends BaseEntity>{
 	public MyResponseBody update(DBBody dbBody,Long id);
 	
 	public MyResponseBody update(DBBody dbBody,Map<String,Object> params);
+	
+	public MyResponseBody update(String table,Map<String,Object> body,Map<String,Object> params);
 
 	public MyResponseBody deleteBatchStatusByIds(List<Long> ids);
 }

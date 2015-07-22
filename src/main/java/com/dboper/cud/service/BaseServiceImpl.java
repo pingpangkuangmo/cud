@@ -41,6 +41,11 @@ public abstract class BaseServiceImpl<T extends BaseEntity> implements BaseServi
 	public MyResponseBody update(DBBody dbBody, Map<String, Object> params) {
 		return getBaseDao().update(dbBody,params);
 	}
+	
+	@Override
+	public MyResponseBody update(String table,Map<String, Object> body, Map<String, Object> params) {
+		return getBaseDao().update(table, body, params);
+	}
 
 	@Override
 	public MyResponseBody deleteBatchStatusByIds(List<Long> ids) {
