@@ -70,36 +70,16 @@ public class DBBodyUtil {
 	             if(value==null){
 	            	 continue;
 	             }
-	             if(value instanceof Integer){
-	            	 if(((Integer)value)>0){
-	            		 map.put(name,value);
-	            	 }
-	             }if(value instanceof Long){
-	            	 if(((Long)value)>0){
-	            		 map.put(name,value);
-	            	 }
-	             }else if(value instanceof String){
+	             if(value instanceof String){
 	            	 if(!((String)value).equals("")){
 	            		 map.put(name,value);
 	            	 }
-	             }else if(value instanceof Float){
-	            	 if(((Float)value)>0.0f){
-	            		 map.put(name,value);
-	            	 }
 	             }else if(value instanceof Double){
-	            	 if(((Double)value)>0.0d){
-	            		 map.put(name,String.format("%.2f",value));
-	            	 }
-	             }else if(value instanceof Date){
-	            	 if(value!=null){
-	            		 map.put(name,value);
-	            	 }
-	             }else if(value instanceof Enum){
-	            	 map.put(name,value);
+	            	 map.put(name,String.format("%.2f",value));
 	             }else if(value instanceof java.util.Date){
-	            	 if(value!=null){
-	            		 map.put(name,new Date(((java.util.Date) value).getTime()));
-	            	 }
+	            	 map.put(name,new Date(((java.util.Date) value).getTime()));
+	             }else{
+	            	 map.put(name,value);
 	             }
 	        }  
 		} catch (Exception e) {
