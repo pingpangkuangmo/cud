@@ -177,6 +177,11 @@ public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T>{
 		return Constants.TABLE_PREFIX+getTableName();
 	}
 	
+	@Override
+	public int executeSqlCount(String sql) {
+		return domainOper.executeSqlCount(sql);
+	}
+
 	protected  abstract String getTableName();
 
 }

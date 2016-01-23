@@ -33,4 +33,6 @@ public interface BaseDao<T extends BaseEntity>{
 	public MyResponseBody update(UpdateBody<T> ts);
 	public MyResponseBody update(Map<String,Object> body,Long id);
 	
+	public int executeSqlCount(String sql);
+	
 }
