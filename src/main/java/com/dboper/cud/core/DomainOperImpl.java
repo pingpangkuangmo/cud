@@ -66,7 +66,7 @@ public class DomainOperImpl implements DomainOper {
 			e.printStackTrace();
 			return MyResponseBodyUtil.failed(result,"sql="+sql+",执行失败");
 		}
-		result.setData(keyHolder.getKey().intValue());
+		result.setData(keyHolder.getKey().longValue());
 		return result;
 	}
 	

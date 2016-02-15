@@ -61,7 +61,7 @@ public class DBBodyUtil {
 			PropertyDescriptor[] pds = beanInfo.getPropertyDescriptors();
 	        for(PropertyDescriptor pd:pds){  
 	             String name=pd.getName();
-	             if(name.equals("id")){
+	             if(name.equals("id") || name.equals("class")){
 	            	 continue;
 	             }
 	             name=table+"."+name;
@@ -78,8 +78,22 @@ public class DBBodyUtil {
 	            	 map.put(name,String.format("%.2f",value));
 	             }else if(value instanceof java.util.Date){
 	            	 map.put(name,new Date(((java.util.Date) value).getTime()));
-	             }else{
+	             }else if(value instanceof Integer || value instanceof Long){
 	            	 map.put(name,value);
+	             }else if(value instanceof Float){
+	            	 if(((Float)value)>0.0f){
+	            		 map.put(name,value);
+	            	 }
+	             }else if(value instanceof Double){
+	            	 if(((Double)value)>0.0d){
+	            		 map.put(name,String.format("%.2f",value));
+	            	 }
+	             }else if(value instanceof Date){
+	            	 map.put(name,value);
+	             }else if(value instanceof Enum){
+	            	 map.put(name,value);
+	             }else if(value instanceof java.util.Date){
+	            	 map.put(name,new Date(((java.util.Date) value).getTime()));
 	             }
 	        }  
 		} catch (Exception e) {

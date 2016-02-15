@@ -17,6 +17,7 @@ public interface BaseDao<T extends BaseEntity>{
 	public MyResponseBody deleteBatchStatusByIds(List<Long> ids);
 	public MyResponseBody deleteStatusById(Long id);
 	public MyResponseBody deleteStatusByForeign(String foreignKey,Object value);
+	public MyResponseBody deleteForeignStatusByForeign(String foreignTable,String foreignKey,Object value);
 	public MyResponseBody deleteBatchStatusById(List<Long> ids);
 	public void delateAllData();
 	public MyResponseBody update(T t,Long id);

@@ -95,7 +95,7 @@ public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T>{
 	
 	@Override
 	public MyResponseBody update(UpdateBody<T> ts) {
-		return update(getDBbody(ts.getNewObj()).getMap(),getDBbody(ts.getOldObj()).getMap());
+		return update(getDBbody(ts.getNewObj()).getMap(),getIDDBbody(ts.getOldObj()).getMap());
 	}
 	
 	@Override
@@ -153,6 +153,12 @@ public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T>{
 	public void delateAllData() {
 		domainOper.executeSqlCount("delete from "+getFullTableName());
 	}
+	
+	@Override
+	public MyResponseBody deleteForeignStatusByForeign(String foreignTable,
+			String foreignKey, Object value) {
+		return _deleteByStatusKeyValue(foreignKey, value, foreignTable);
+	}
 
 	private MyResponseBody _deleteByStatusById(Long id,String table_name){
 		if(id<1){
@@ -167,6 +173,10 @@ public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T>{
 	
 	private DBBody getDBbody(T t){
 		return t.toDBBody();
+	}
+	
+	private DBBody getIDDBbody(T t){
+		return t.toIdDBBody();
 	}
 	
 	private Map<String, Object> getIdParams(DBBody t, Long id) {
