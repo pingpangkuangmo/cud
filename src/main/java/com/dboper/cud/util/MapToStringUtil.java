@@ -1,6 +1,7 @@
 package com.dboper.cud.util;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Map;
 import java.util.Set;
 
@@ -20,7 +21,7 @@ public class MapToStringUtil {
 			if(!tmp_key.startsWith(Constants.TABLE_PREFIX)){
 				tmp_key=Constants.TABLE_PREFIX+tmp_key;
 			}
-			if(value instanceof String || value instanceof Date){
+			if(value instanceof String || value instanceof Date || value instanceof Timestamp || value instanceof Enum){
 				str.append(tmp_key+"='"+map.get(key)+"' "+join+" ");
 			}else{
 				str.append(tmp_key+"="+map.get(key)+" "+join+" ");

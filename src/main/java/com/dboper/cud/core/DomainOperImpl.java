@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -82,7 +83,7 @@ public class DomainOperImpl implements DomainOper {
 			}
 			columns.append(tmpKey+",");
 			Object value=map.get(key);
-			if(value instanceof String || value instanceof Date){
+			if(value instanceof String || value instanceof Date || value instanceof Timestamp){
 				values.append("'"+map.get(key)+"',");
 			}else{
 				values.append(value+",");
